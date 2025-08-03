@@ -11,10 +11,17 @@ public class Fabrics : ProjectFabric
     {
         amender
             .SelectMany(complilation => complilation.AllTypes)
-            .Where(namedType => namedType.Accessibility == Accessibility.Public
-                    && !namedType.GetNamespace().ContainingNamespace.Name.Contains(nameof(LoggableAttributeTest.PrettyPrint)))
+            .Where(namedType => namedType.Accessibility == Accessibility.Public)
+            .BlackListNamespace(nameof(LoggableAttributeTest.PrettyPrint))
             .SelectMany(type => type.Methods)
             .Where(method => method.Accessibility == Accessibility.Public)
             .AddAspectIfEligible<LoggableAttribute>();
     }
+}
+
+[CompileTime]
+public static class ProjectAmenderExtensions
+{
+    public static IQuery<INamedType> BlackListNamespace(this IQuery<INamedType> query, string namespaceName)
+        => query.Where(w => !w.GetNamespace().ContainingNamespace.Name.Contains(namespaceName));
 }
