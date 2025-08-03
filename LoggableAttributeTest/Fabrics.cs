@@ -11,9 +11,10 @@ public class Fabrics : ProjectFabric
     {
         amender
             .SelectMany(complilation => complilation.AllTypes)
-            .Where(w => w.Accessibility == Accessibility.Public)
+            .Where(namedType => namedType.Accessibility == Accessibility.Public
+                    && !namedType.GetNamespace().ContainingNamespace.Name.Contains(nameof(LoggableAttributeTest.PrettyPrint)))
             .SelectMany(type => type.Methods)
-            .Where(w => w.Accessibility == Accessibility.Public)
+            .Where(method => method.Accessibility == Accessibility.Public)
             .AddAspectIfEligible<LoggableAttribute>();
     }
 }

@@ -1,6 +1,6 @@
 using System.Reflection;
 
-namespace LoggableAttributeTest;
+namespace LoggableAttributeTest.PrettyPrint;
 
 public static class ReflectionToStringExts
 {
