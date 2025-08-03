@@ -18,7 +18,10 @@ public class LoggableAttribute : OverrideMethodAspect
 
         var result = meta.Proceed();
 
-        Console.WriteLine($"Result: {result}");
+        if (result is not null)
+        {
+            Console.WriteLine($"Result: {result}");
+        }
         return result;
     }
 }
