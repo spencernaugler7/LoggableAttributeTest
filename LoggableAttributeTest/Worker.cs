@@ -21,7 +21,7 @@ public class Worker : BackgroundService
         return Task.CompletedTask;
     }
 
-    public static void DoStuff(string num, DateTime time, List<string> strings)
+    public static void DoStuff(string? num, DateTime time, List<string> strings)
     {
         var blah = new Blah("Test", 213);
         var blah2 = new CollectionBlah(["Test1", "Test2"], new Dictionary<string, string> { { "Test1", "Test3" } });
