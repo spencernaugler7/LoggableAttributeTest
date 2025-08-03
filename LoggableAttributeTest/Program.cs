@@ -1,5 +1,4 @@
-﻿using Castle.DynamicProxy;
-using LoggableAttributeTest;
+﻿using LoggableAttributeTest;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
