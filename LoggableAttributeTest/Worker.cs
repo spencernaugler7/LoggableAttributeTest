@@ -12,24 +12,17 @@ public class Worker : BackgroundService
 {
     protected override Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        try
-        {
-            DoStuff();
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.ToString());
-        }
+
+        Console.WriteLine("enter number to divide from 3:");
+        var num = Console.ReadLine();
+
+        DoStuff(num, DateTime.Now, ["one, two"]);
+
         return Task.CompletedTask;
     }
 
-    [Loggable]
-    private static void DoStuff()
+    public static void DoStuff(string num, DateTime time, List<string> strings)
     {
-        Console.WriteLine("enter number to divide from 3:");
-
-        var num = Console.ReadLine();
-
         var blah = new Blah("Test", 213);
         var blah2 = new CollectionBlah(["Test1", "Test2"], new Dictionary<string, string> { { "Test1", "Test3" } });
 
