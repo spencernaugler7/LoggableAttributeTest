@@ -33,6 +33,6 @@ public class Worker : BackgroundService
         }
 
         var a = 3 / parsedNum;
-        Console.WriteLine(a);
+        Console.WriteLine($"Final Results: {a}");
     }
 }
