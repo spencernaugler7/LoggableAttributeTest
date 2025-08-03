@@ -3,7 +3,8 @@ using Metalama.Framework.Aspects;
 
 namespace LoggableAttributeTest;
 
-#pragma warning disable CA2200 // original stack trace is perserved
+#pragma warning disable CA2200 // original stack trace is logged
+#pragma warning disable CS8602
 
 public class IntecerceptExceptionAttribute : OverrideMethodAspect
 {
@@ -17,11 +18,19 @@ public class IntecerceptExceptionAttribute : OverrideMethodAspect
         {
             foreach (var param in meta.Target.Method.Parameters)
             {
-                e.Data.Add(param.Name, param?.Value?.ToString() ?? "null");
+                e.Data.Add(param.Name, param.Value.ToString());
             }
 
             throw e;
         }
+    }
+}
+
+public class EnrichExceptionAttribute : OverrideMethodAspect
+{
+    public override dynamic? OverrideMethod()
+    {
+        throw new NotImplementedException();
     }
 }
 
@@ -33,13 +42,5 @@ public static class EnrichExceptionHandler
     public static void AppendContextFrame(this Exception e, string frame)
     {
 
-    }
-}
-
-public class EnrichExceptionAttribute : OverrideMethodAspect
-{
-    public override dynamic? OverrideMethod()
-    {
-        throw new NotImplementedException();
     }
 }
