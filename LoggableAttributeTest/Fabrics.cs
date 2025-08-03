@@ -16,6 +16,14 @@ public class Fabrics : ProjectFabric
             .SelectMany(type => type.Methods)
             .Where(method => method.Accessibility == Accessibility.Public)
             .AddAspectIfEligible<LoggableAttribute>();
+        
+        amender
+            .SelectMany(complilation => complilation.AllTypes)
+            .Where(namedType => namedType.Accessibility == Accessibility.Public)
+            .BlackListNamespace(nameof(LoggableAttributeTest.PrettyPrint))
+            .SelectMany(type => type.Methods)
+            .Where(method => method.Accessibility == Accessibility.Public)
+            .AddAspectIfEligible<ExceptionAttribute>();
     }
 }
 
