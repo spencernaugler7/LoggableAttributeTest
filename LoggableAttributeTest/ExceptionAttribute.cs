@@ -3,7 +3,7 @@ using Metalama.Framework.Aspects;
 
 namespace LoggableAttributeTest;
 
-public class ExceptionAttribute : OverrideMethodAspect
+public class IntecerceptExceptionAttribute : OverrideMethodAspect
 {
     public override dynamic? OverrideMethod()
     {
