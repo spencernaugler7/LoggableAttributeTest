@@ -12,12 +12,7 @@ internal static class Program
         var builder = Host.CreateDefaultBuilder();
         builder.ConfigureServices((hostingContext, services) =>
         {
-            var proxyGenerator = new ProxyGenerator();
-            var worker = new Worker();
-            var loggingInerceptor = new LoggingInterceptor();
-
-            var workerWithProxy = proxyGenerator.CreateClassProxyWithTarget<Worker>(worker, loggingInerceptor);
-            services.AddHostedService<Worker>(_ => workerWithProxy);
+            services.AddHostedService<Worker>();
         });
 
         var app = builder.Build();
