@@ -7,14 +7,18 @@ public class LoggableAttribute : OverrideMethodAspect
 {
     public override dynamic? OverrideMethod()
     {
-        Console.WriteLine($"Entering {meta.Target.Method}");
-        try
+        var method = meta.Target.Method;
+
+        Console.WriteLine($"Entering {method.Name}");
+        foreach (var param in method.Parameters)
         {
-            return meta.Proceed();
+            var value = string.Empty;
+            Console.WriteLine($"Param: {param.Name}: {param.Value}");
         }
-        finally
-        {
-            Console.WriteLine($"Leaving {meta.Target.Method}");
-        }
+
+        var result = meta.Proceed();
+
+        Console.WriteLine($"Result: {result}");
+        return result;
     }
 }
