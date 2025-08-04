@@ -1,4 +1,4 @@
-using System;
+using System.Text;
 using Metalama.Framework.Aspects;
 
 namespace LoggableAttributeTest;
@@ -6,6 +6,9 @@ namespace LoggableAttributeTest;
 #pragma warning disable CA2200 // original stack trace is logged
 #pragma warning disable CS8602
 
+/// <summary>
+/// intercepts method call and adds function params to <see cref="Exception.Data"/> dictionary if the call throws an exception.
+/// </summary>
 public class IntecerceptExceptionAttribute : OverrideMethodAspect
 {
     public override dynamic? OverrideMethod()
@@ -23,24 +26,5 @@ public class IntecerceptExceptionAttribute : OverrideMethodAspect
 
             throw e;
         }
-    }
-}
-
-public class EnrichExceptionAttribute : OverrideMethodAspect
-{
-    public override dynamic? OverrideMethod()
-    {
-        throw new NotImplementedException();
-    }
-}
-
-public static class EnrichExceptionHandler
-{
-    private const string _slotName = "Context";
-
-    [ExcludeAspect(typeof(EnrichExceptionAttribute))]
-    public static void AppendContextFrame(this Exception e, string frame)
-    {
-
     }
 }
