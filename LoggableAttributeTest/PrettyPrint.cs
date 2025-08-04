@@ -1,5 +1,7 @@
 using System.Reflection;
 
+#pragma warning disable
+
 namespace LoggableAttributeTest.PrettyPrint;
 
 public static class ReflectionToStringExts

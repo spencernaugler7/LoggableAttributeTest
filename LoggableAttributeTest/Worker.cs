@@ -1,8 +1,9 @@
 using System;
 using Microsoft.Extensions.Hosting;
 
-namespace LoggableAttributeTest;
+#pragma warning disable CS9113
 
+namespace LoggableAttributeTest;
 
 internal class Blah(string SubBlah, int SubBlah2);
 

@@ -3,6 +3,8 @@ using Metalama.Framework.Aspects;
 using Metalama.Framework.Code;
 using Metalama.Framework.Fabrics;
 
+#pragma warning disable
+
 namespace LoggableAttributeTest;
 
 public class Fabrics : ProjectFabric
@@ -16,7 +18,7 @@ public class Fabrics : ProjectFabric
             .SelectMany(type => type.Methods)
             .Where(method => method.Accessibility == Accessibility.Public)
             .AddAspectIfEligible<LoggableAttribute>();
-        
+
         amender
             .SelectMany(complilation => complilation.AllTypes)
             .Where(namedType => namedType.Accessibility == Accessibility.Public)
