@@ -7,6 +7,8 @@ using Metalama.Framework.Fabrics;
 
 namespace LoggableAttributeTest;
 
+#pragma warning disable CS8602
+
 public class Fabrics : ProjectFabric
 {
     public override void AmendProject(IProjectAmender amender)
