@@ -23,7 +23,7 @@ public class Fabrics : ProjectFabric
             .BlackListNamespace(nameof(LoggableAttributeTest.PrettyPrint))
             .SelectMany(type => type.Methods)
             .Where(method => method.Accessibility == Accessibility.Public)
-            .AddAspectIfEligible<IntecerceptExceptionAttribute>();
+            .AddAspectIfEligible<InterceptExceptionAttribute>();
     }
 }
 

@@ -9,7 +9,7 @@ namespace LoggableAttributeTest;
 /// <summary>
 /// intercepts method call and adds function params to <see cref="Exception.Data"/> dictionary if the call throws an exception.
 /// </summary>
-public class IntecerceptExceptionAttribute : OverrideMethodAspect
+public class InterceptExceptionAttribute : OverrideMethodAspect
 {
     public override dynamic? OverrideMethod()
     {
